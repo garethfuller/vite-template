@@ -1,0 +1,19 @@
+version: "3.7"
+
+volumes:
+  db:
+  
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    restart: always
+    command: yarn run dev
+    volumes: 
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    environment: 
+      INFURA_PROJECT_ID: xxx
